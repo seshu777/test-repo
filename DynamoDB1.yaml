@@ -1,0 +1,84 @@
+
+
+AWSTemplateFormatVersion: "2010-09-09"
+
+Resources: 
+
+  myDynamoDBTable: 
+
+    Type: AWS::DynamoDB::Table
+
+    Properties:
+
+      AttributeDefinitions: 
+
+        - 
+
+          AttributeName: "emp_id"
+
+          AttributeType: "N"
+
+        - 
+
+          AttributeName: "emp_name"
+
+          AttributeType: "N"
+
+
+
+      KeySchema:
+
+        - 
+
+          AttributeName: "emp_id"
+
+          KeyType: "HASH"
+
+        - 
+
+          AttributeName: "emp_name"
+
+          KeyType: "RANGE"
+
+      ProvisionedThroughput: 
+
+        ReadCapacityUnits: "5"
+
+        WriteCapacityUnits: "5"
+
+      GlobalSecondaryIndexes: 
+
+        - 
+
+          IndexName: "myGSI"
+
+          KeySchema: 
+
+            - 
+
+              AttributeName: "emp_id"
+
+              KeyType: "HASH"          
+
+            - 
+
+              AttributeName: "emp_name"
+
+              KeyType: "RANGE"
+
+          ProvisionedThroughput: 
+
+             ReadCapacityUnits: "5"
+
+             WriteCapacityUnits: "5"
+
+          Projection: 
+
+            NonKeyAttributes: 
+
+              - "emp_id"
+
+              - "emp_name"
+
+            ProjectionType: "INCLUDE"
+
