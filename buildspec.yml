@@ -10,8 +10,8 @@ phases:
   build:
     commands:
       - aws cloudformation create-stack --stack-name myteststack --template-body file://DynamoDB.yaml
-	  - aws cloudformation create-stack --stack-name myteststack --template-body file://DynamoDB1.yaml
-	  - aws cloudformation create-stack --stack-name myteststack --template-body file://lambda-api.yaml
+      - aws cloudformation create-stack --stack-name myteststack --template-body file://DynamoDB1.yaml
+      - aws cloudformation create-stack --stack-name myteststack --template-body file://lambda-api.yaml
 artifacts:
   type: zip
   files:
